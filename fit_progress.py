@@ -29,8 +29,6 @@ class AppMenu():
             self.all_moves[keys] = [exercise]
             keys += 1
         self.all_moves[keys] = ["exit"]
-
-        print(self.all_moves)
         
 
     def ShowAll(self):
