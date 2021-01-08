@@ -3,6 +3,7 @@
 
 # Github repository adress - https://github.com/Placius/fit_progress.git
 # git remote add origin https://github.com/Placius/fit_progress.git
+# git branch -M main     
 # git push -u origin main
 
 # import modules
