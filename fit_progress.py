@@ -1,5 +1,5 @@
 # app for novice users in sport 
-# In app have you exercises and you can tracking your progress
+# On this app have you exercises and you can tracking your progress
 
 # Github repository adress - https://github.com/Placius/fit_progress.git
 # git remote add origin https://github.com/Placius/fit_progress.git
@@ -14,19 +14,16 @@ import sys, os
 class AppMenu():
     
     def __init__(self):   
-        exercises_list = ["exercise1","exercise2","exercise3","exercise4","exercise5"]   
+        options_list = ["Track your progress","Exercises", "Motivation for today"]   
         self.title = "FIT progress"
-        self.tracking_progress_function = "Track your progress"
-        self.exercises = exercises_list
+        self.options = options_list
         self.user_choice = None
         self.all_moves = {}
     
     def CreateAllMovesList(self):
         keys = 1
-        self.all_moves[keys] = [self.tracking_progress_function]
-        keys += 1
-        for exercise in self.exercises:
-            self.all_moves[keys] = [exercise]
+        for option in self.options:
+            self.all_moves[keys] = [option]
             keys += 1
         self.all_moves[keys] = ["exit"]
         
@@ -34,15 +31,14 @@ class AppMenu():
     def ShowAll(self):
         numerate = 1
         print(self.title, "\n")
-        print(numerate, " - ", self.tracking_progress_function)
-        numerate +=1
-        for exercise in self.exercises:
-            print(numerate, " - ", exercise)
+        for option in self.options:
+            print(numerate, " - ", option)
             numerate +=1
         print("\n",numerate, "Exit")
 
 
-    def MakeAchoice(self, show_menu):
+    def MakeAchoice(self, show_menu, create_moves_list):
+        create_moves_list()
         while True:
             # auto clean window after new entry
             os.system("cls")
@@ -51,10 +47,19 @@ class AppMenu():
             show_menu()
 
             # choices 
+            print("\n")
             user_choice = input("What do you want now to do? - ")
             self.user_choice = user_choice
-            if self.user_choice == '1':
+
+            # auto numbered for exit function 
+
+            if self.user_choice == str(len(self.all_moves)):
+                print("Bye Bye...")
+                sys.exit(0)
+
+            elif self.user_choice == '1':
                 pass
+            
             
             elif self.user_choice == '2':
                 pass
@@ -67,12 +72,6 @@ class AppMenu():
 
             elif self.user_choice == '5':
                 pass
-            
-            # auto numbered for exit function 
-
-            elif self.user_choice == str(len(self.all_moves)):
-                print("Bye Bye...")
-                sys.exit(0)
             
             else:
                 print("Somthing goes wrong, please try again!")

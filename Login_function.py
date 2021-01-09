@@ -1,4 +1,4 @@
-# Log in menu / start site
+# Login menu / start site
 
 # import modules
 import fit_progress, time
@@ -11,7 +11,7 @@ class Login:
         self.tries = 3
 
     # check users datas (login and password)
-    def log(self):
+    def Log(self):
         try_this_login = input("Login: ")
         try:
             lista = []
@@ -30,7 +30,7 @@ class Login:
                     print("Welcome in your private FIT-progress app account!")
                     time.sleep(3)
                     app = fit_progress.AppMenu()
-                    app.MakeAchoice(app.ShowAll)
+                    app.MakeAchoice(app.ShowAll, app.CreateAllMovesList)
 
                 elif self.tries <= 0:
                     print("I'm  sorry, your tries limit was finished.")
@@ -43,10 +43,3 @@ class Login:
         
         except FileNotFoundError:
             print("User not exist, try with another login or create a new account.")
-        
-        input()
-
-log = Login()
-
-log.log()
-

@@ -1,0 +1,1 @@
+# function for choosing random motivation text

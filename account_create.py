@@ -2,9 +2,9 @@
 
 # import modules
 
-import datetime, os
+import datetime, os, time, sys
 
-class New_user:
+class NewUser:
     def __init__(self):
         self.user_id = 1
         self.name = "name"
@@ -54,7 +54,10 @@ class New_user:
         year_of_birth = int(input("Year of birth: "))
         month_of_birth = int(input("Month of birth: "))
         day_of_birth = int(input("Day of birth: "))
+
+        # actual age calculating
         age(year_of_birth, month_of_birth, day_of_birth)
+
         while True:
             sex = input("Sex(M/F): ")
             if sex.upper() == "M":
@@ -106,6 +109,9 @@ class New_user:
                 self.user_id = int(self.user_id) + 1
                 file.write(str(self.user_id))
 
+        print("Your new account was correct created!")
+        time.sleep(3)
+
 
 """class User:
     def __init__(self):
@@ -120,9 +126,3 @@ class New_user:
         for el in range(0,int(len(all_info))):
             print(info_names[el], all_info[el])"""
             
-        
-User1 = New_user()
-
-User1.CreateAccount(User1.Age)
-
-input()
