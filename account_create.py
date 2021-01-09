@@ -6,6 +6,7 @@ import datetime
 
 class New_user:
     def __init__(self):
+        self.user_id = 1
         self.name = "name"
         self.year_of_birth = "year"
         self.month_of_birth = "month"
@@ -67,23 +68,37 @@ class New_user:
         self.year_of_birth = year_of_birth
         self.month_of_birth = month_of_birth
         self.day_of_birth = day_of_birth
-        self.sex = sex
         self.height = height
         self.weight = weight
         self.login = login
         self.password = password
-    
+
+        # function for save user datas in file    
+        all_info = [self.user_id, self.name, self.year_of_birth, self.month_of_birth,
+                    self.day_of_birth, self.age, self.sex, self.height, self.weight,
+                    self.login, self.password]    
+        
+        with open("Id" + str(self.user_id) + ".txt", "w+") as file:
+            for el in all_info:
+                file.write(str(el) + "\n")
+
+
+"""class User:
+    def __init__(self):
+        pass
+
     def PrintInfos(self):
-        all_info = [self.name, self.year_of_birth, self.month_of_birth,
-        self.day_of_birth, self.age, self.sex, self.height, self.weight,
-        self.login, self.password]
-        for info in all_info:
-            print(info)
+        all_info = [self.user_id, self.name, self.year_of_birth, self.month_of_birth,
+                    self.day_of_birth, self.age, self.sex, self.height, self.weight,
+                    self.login, self.password]
+        info_names = ["Id:", "Name: ", "Year of birth: ", "Month of birth: ", "Day of birth: ",
+                        "Age: ", "Sex: ", "Height: ", "Weight: ", "Login: ", "Password: "]
+        for el in range(0,int(len(all_info))):
+            print(info_names[el], all_info[el])"""
+            
         
 User1 = New_user()
 
 User1.CreateAccount(User1.Age)
-
-User1.PrintInfos()
 
 input()
