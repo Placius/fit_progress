@@ -78,6 +78,9 @@ class AppMenu():
                 print("Somthing goes wrong, please try again!")
 
 
+x = input("Jason")
+
+if x == '1'
 startApp = AppMenu()
 
 startApp.CreateAllMovesList()

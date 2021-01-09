@@ -1,6 +1,7 @@
 # Log in menu / start site
 
 # import modules
+import fit_progress, time
 
 # make a Log in function
 class Login:
@@ -27,7 +28,9 @@ class Login:
 
                 if str(try_this_password) == str(lista[-1]):
                     print("Welcome in your private FIT-progress app account!")
-                    break
+                    time.sleep(3)
+                    app = fit_progress.AppMenu()
+                    app.MakeAchoice(app.ShowAll)
 
                 elif self.tries <= 0:
                     print("I'm  sorry, your tries limit was finished.")
@@ -46,3 +49,4 @@ class Login:
 log = Login()
 
 log.log()
+
