@@ -2,7 +2,7 @@
 
 # import modules
 
-import datetime
+import datetime, os
 
 class New_user:
     def __init__(self):
@@ -90,10 +90,17 @@ class New_user:
         all_info = [self.user_id, self.name, self.year_of_birth, self.month_of_birth,
                     self.day_of_birth, self.age, self.sex, self.height, self.weight,
                     self.login, self.password]    
-        
-        with open("users/" + str(self.login) + ".txt", "w+") as file:
-            for el in all_info:
-                file.write(str(el) + "\n")
+        try:
+            with open("users/" + str(self.login) + ".txt", "w+") as file:
+                for el in all_info:
+                    file.write(str(el) + "\n")
+
+        # if file not exist make a new file          
+        except FileNotFoundError:
+            os.mkdir("users")
+            with open("users/" + str(self.login) + ".txt", "w+") as file:
+                for el in all_info:
+                    file.write(str(el) + "\n")
         
         with open("actual_id_num.txt", "w") as file:
                 self.user_id = int(self.user_id) + 1
