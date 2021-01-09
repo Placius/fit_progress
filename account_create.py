@@ -91,7 +91,7 @@ class New_user:
                     self.day_of_birth, self.age, self.sex, self.height, self.weight,
                     self.login, self.password]    
         
-        with open("Id" + str(self.user_id) + ".txt", "w+") as file:
+        with open("users/" + str(self.login) + ".txt", "w+") as file:
             for el in all_info:
                 file.write(str(el) + "\n")
         
