@@ -37,6 +37,19 @@ class New_user:
 
     
     def CreateAccount(self, age):
+        # get the Id number for new user
+        try:
+            with open("actual_id_num.txt", "r") as file:
+                id = file.read()
+                self.user_id = id
+
+        # if file not exist, making a new file with start id
+        except IOError:
+            with open("actual_id_num.txt", "w") as file:
+                self.user_id = 1
+                file.write(str(self.user_id))  
+
+        # get information about user
         name = input("Name: ")
         year_of_birth = int(input("Year of birth: "))
         month_of_birth = int(input("Month of birth: "))
@@ -81,6 +94,10 @@ class New_user:
         with open("Id" + str(self.user_id) + ".txt", "w+") as file:
             for el in all_info:
                 file.write(str(el) + "\n")
+        
+        with open("actual_id_num.txt", "w") as file:
+                self.user_id = int(self.user_id) + 1
+                file.write(str(self.user_id))
 
 
 """class User:
