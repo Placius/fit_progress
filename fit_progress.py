@@ -9,6 +9,9 @@
 # import modules
 import sys, os
 
+# import modules from from your own libraries
+import motivation
+
 # app menu
 
 class AppMenu():
@@ -65,8 +68,14 @@ class AppMenu():
                 pass
 
             elif self.user_choice == '3':
-                pass
+                os.system()
+                citat = motivation.Motivation()
+                print_citat = citat.Return_citat()
+                print(print_citat)
+                print("\n\n")
+                input("press -> Enter")
 
+            # more option in the future
             elif self.user_choice == '4':
                 pass
 

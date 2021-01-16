@@ -6,7 +6,7 @@ class Main:
     def __init__(self):
         self.welcome_message = "Hello!"
     
-    def MainWindow(self):   
+    def MainWindow(self):
         while True:
             os.system("cls")
             print(self.welcome_message)

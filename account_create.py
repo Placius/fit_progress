@@ -15,6 +15,7 @@ class NewUser:
         self.sex = "M/F"
         self.height = "height"
         self.weight = "weight"
+        self.lvl = "level"
         self.login = "login"
         self.password = "password"
     
@@ -71,6 +72,38 @@ class NewUser:
             
         height = int(input("Height: "))
         weight = int(input("Weight: "))
+        while True:
+            lvl = input("""
+            Begginer:  < 5 (pushups)
+
+            Low: 10 < 15 (pushups)
+
+            Medium: 15 < 30 (pushups)
+
+            High: 30 <  (pushups)
+
+            Your level? (B | L | M | H): 
+
+            """)
+            if lvl.upper() == "B":
+                self.lvl = "Beginner"
+                break
+
+            elif lvl.upper() == "L":
+                self.lvl = "Low"
+                break
+
+            elif lvl.upper() == "M":
+                self.lvl = "Medium"
+                break
+
+            elif lvl.upper() == "H":
+                self.lvl = "High"
+                break
+
+            else:
+                print("Bad command, please try again.")
+
         login = input("Login: ")
         password = "password"
         check_password = "check_password"
@@ -92,7 +125,7 @@ class NewUser:
         # function for save user datas in file    
         all_info = [self.user_id, self.name, self.year_of_birth, self.month_of_birth,
                     self.day_of_birth, self.age, self.sex, self.height, self.weight,
-                    self.login, self.password]    
+                    self.lvl, self.login, self.password]    
         try:
             with open("users/" + str(self.login) + ".txt", "w+") as file:
                 for el in all_info:
@@ -120,7 +153,7 @@ class NewUser:
     def PrintInfos(self):
         all_info = [self.user_id, self.name, self.year_of_birth, self.month_of_birth,
                     self.day_of_birth, self.age, self.sex, self.height, self.weight,
-                    self.login, self.password]
+                    self.lvl, self.login, self.password]
         info_names = ["Id:", "Name: ", "Year of birth: ", "Month of birth: ", "Day of birth: ",
                         "Age: ", "Sex: ", "Height: ", "Weight: ", "Login: ", "Password: "]
         for el in range(0,int(len(all_info))):
