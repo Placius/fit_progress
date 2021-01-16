@@ -44,6 +44,9 @@ class AppMenu():
 
     def MakeAchoice(self, show_menu, create_moves_list):
         create_moves_list()
+        # checking if the warm-up has already been done
+        if_warmup_was_done = 1
+        
         while True:
             # auto clean window after new entry
             os.system("cls")
@@ -65,7 +68,7 @@ class AppMenu():
             elif self.user_choice == '1':
                 track = tracking_progress.TrackYourProgress()
                 track.Print_info()
-            
+
             elif self.user_choice == '2':
                 print("""
                 1 - All body training
@@ -81,28 +84,87 @@ class AppMenu():
                 6 - Shooting fifteen
                 \n
                 """)
-                choice = input("Your choice - ")
 
-                if choice == '1':
-                    pass
+                while True:
+                    choice = input("Your choice - ")
 
-                elif choice == '2':
-                    pass
+                    if choice == '1':
+                        print("Exercise: All body training\n\n")
+                        input("If you ready --> press Enter")
+                        if if_warmup_was_done == 1:
+                            warmUp = exercises.WarmUp()
+                            warmUp.BeforeStart()
+                            warmUp.StartWarmUp()
+                            if_warmup_was_done += 1
+                        
+                        else:
+                            pass
 
-                elif choice == '3':
-                    pass
+                    elif choice == '2':
+                        print("Exercise: Push Up\n\n")
+                        input("If you ready --> press Enter")
+                        if if_warmup_was_done == 1:
+                            warmUp = exercises.WarmUp()
+                            warmUp.BeforeStart()
+                            warmUp.StartWarmUp()
+                            if_warmup_was_done += 1
+                        
+                        else:
+                            pass
 
-                elif choice == '4':
-                    pass
+                    elif choice == '3':
+                        print("Exercise: Pull Up\n\n")
+                        input("If you ready --> press Enter")
+                        if if_warmup_was_done == 1:
+                            warmUp = exercises.WarmUp()
+                            warmUp.BeforeStart()
+                            warmUp.StartWarmUp()
+                            if_warmup_was_done += 1
+                        
+                        else:
+                            pass
 
-                elif choice == '5':
-                    pass
+                    elif choice == '4':
+                        print("Exercise: Crunches\n\n")
+                        input("If you ready --> press Enter")
+                        if if_warmup_was_done == 1:
+                            warmUp = exercises.WarmUp()
+                            warmUp.BeforeStart()
+                            warmUp.StartWarmUp()
+                            if_warmup_was_done += 1
+                        
+                        else:
+                            pass
 
-                elif choice == '6':
-                    pass
+                    elif choice == '5':
+                        print("Exercise: Squats\n\n")
+                        input("If you ready --> press Enter")
+                        if if_warmup_was_done == 1:
+                            warmUp = exercises.WarmUp()
+                            warmUp.BeforeStart()
+                            warmUp.StartWarmUp()
+                            if_warmup_was_done += 1
+                        
+                        else:
+                            pass
 
-                else:
-                    pass
+                    elif choice == '6':
+                        print("Exercise: Shooting Fifteen\n\n")
+                        input("If you ready --> press Enter")
+                        if if_warmup_was_done == 1:
+                            warmUp = exercises.WarmUp()
+                            warmUp.BeforeStart()
+                            warmUp.StartWarmUp()
+                            if_warmup_was_done += 1
+                        
+                        else:
+                            pass
+                    
+                    elif choice == '7':
+                        break
+
+                    else:
+                        print("Bad commant, please try again.")
 
             elif self.user_choice == '3':
                 os.system("cls")

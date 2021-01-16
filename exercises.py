@@ -1,5 +1,8 @@
 # application exercises functions
 
+# import modules
+import time, os, winsound
+
 # general class for exercises classes
 class Exercise:
     def __init__(self, name, description, lvl, repeat, series, weekly_plan, pause):
@@ -31,7 +34,46 @@ class Exercise:
 # warm-up
 class WarmUp:
     def __init__(self):
-        pass
+        self.all_infos = []
+        self.exercises = []
+
+        # calling functions
+        self.AddInfosToLists()
+        
+    def BeforeStart(self):
+        t = 5
+        for i in range(0,6):
+            os.system("cls")
+            print("Warm up starting in " + str(t) + "...")
+            time.sleep(1)
+            t -= 1
+            winsound.Beep(400, 1000)
+    
+    def AddInfosToLists(self):
+        with open("exercises/warm-up.txt") as file:
+            lines = file.read().split("\n")
+            line_num = 1
+            for line in lines:
+                self.all_infos.append(line)
+                if line_num > 2:
+                    self.exercises.append(line)
+                line_num += 1
+    
+    def StartWarmUp(self):
+        for exercise in self.exercises:
+            length = int(self.all_infos[1])
+            sec = length
+            while sec != 0:
+                os.system("cls")
+                print(self.all_infos[0].upper())
+                print("\n\nExercise:", exercise)
+                print("Time for this exercise - " + str(sec))
+                time.sleep(1)
+                sec -= 1
+            
+            winsound.Beep(800, 1000)
+            print("Next exercise....")
+            time.sleep(3)
     
 # push-ups
 class Exercise1(Exercise):
@@ -57,3 +99,5 @@ class Exercise4(Exercise):
 class Exercise5(Exercise):
     def __init__(self):
         pass
+
+WarmUp()
