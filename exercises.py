@@ -13,16 +13,16 @@ class Exercise:
     # matching the task to the exercise
     def How_much_series_and_repeats(self):
 
-        if self.lvl = "Beginner":
+        if self.lvl == "Beginner":
             pass
         
-        elif self.lvl = "Low":
+        elif self.lvl == "Low":
             pass
 
-        elif self.lvl = "Medium":
+        elif self.lvl == "Medium":
             pass
 
-        elif self.lvl = "High":
+        elif self.lvl == "High":
             pass
         
         else:

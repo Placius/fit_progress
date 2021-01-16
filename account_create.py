@@ -104,7 +104,24 @@ class NewUser:
             else:
                 print("Bad command, please try again.")
 
-        login = input("Login: ")
+        while True:
+            try_login = input("Login: ")
+            logins_list = []
+            with open("all_logins.txt", "r+") as file:
+                lines = file.read().split("\n")
+                for line in lines:
+                    logins_list.append(line)
+
+            if try_login in logins_list:
+                print("This login is already taken...")
+                continue
+
+            else:
+                self.login = try_login
+                with open("all_logins.txt", "a+") as file:
+                    file.write(str(self.login) + "\n")
+                    break
+
         password = "password"
         check_password = "check_password"
         while password != check_password:
@@ -119,7 +136,6 @@ class NewUser:
         self.day_of_birth = day_of_birth
         self.height = height
         self.weight = weight
-        self.login = login
         self.password = password
 
         # function for save user datas in file    
@@ -127,14 +143,16 @@ class NewUser:
                     self.day_of_birth, self.age, self.sex, self.height, self.weight,
                     self.lvl, self.login, self.password]    
         try:
-            with open("users/" + str(self.login) + ".txt", "w+") as file:
+            os.mkdir("users/" + str(self.login))
+            with open("users/" + str(self.login) + "/" + str(self.login) + ".txt", "w+") as file:
                 for el in all_info:
                     file.write(str(el) + "\n")
 
         # if file not exist make a new file          
         except FileNotFoundError:
             os.mkdir("users")
-            with open("users/" + str(self.login) + ".txt", "w+") as file:
+            os.mkdir(str(self.login))
+            with open("users/" + str(self.login) + "/" + str(self.login) + ".txt", "w+") as file:
                 for el in all_info:
                     file.write(str(el) + "\n")
         

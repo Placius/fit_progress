@@ -105,7 +105,7 @@ class AppMenu():
                     pass
 
             elif self.user_choice == '3':
-                os.system()
+                os.system("cls")
                 citat = motivation.Motivation()
                 print_citat = citat.Return_citat()
                 print(print_citat)

@@ -15,7 +15,7 @@ class Login:
         try_this_login = input("Login: ")
         try:
             lista = []
-            with open("users/"+try_this_login+".txt") as file:
+            with open("users/" + try_this_login + "/" + try_this_login+".txt") as file:
                 for line in file:
                     lista.append(line.rstrip())
             
