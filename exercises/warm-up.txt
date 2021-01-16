@@ -11,8 +11,3 @@ Head Circles (koliste ruchy głowy)
 Wrist Circles (koliste ruchy nadgarstków)
 Elbowls Circles (koliste ruchy łokci)
 Torso Circles (koliste ruchy tłowia)
-
-
-
-
-
