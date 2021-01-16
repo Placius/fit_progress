@@ -2,20 +2,17 @@
 
 # general class for exercises classes
 class Exercise:
-    def __init__(self, name, lvl, repeat, series, weekly_plan, pause):
+    def __init__(self, name, description, lvl, repeat, series, weekly_plan, pause):
         self.name = name
-        self.level = lvl
-        self.repeat = repeat
+        self.description = "descroiption"
+        self.lvl = lvl
         self.series = series
-        self.weekly_plan = weekly_plan
+        self.repeat = repeat
         self.pause_time_after_one_serie = pause
 
-# matching the task to the exercise
-class MatchingTheTask:
-    def __init__(self, lvl):
-        self.lvl = lvl
+    # matching the task to the exercise
+    def How_much_series_and_repeats(self):
 
-    def How_much_repeats(self):
         if self.lvl = "Beginner":
             pass
         
@@ -31,20 +28,15 @@ class MatchingTheTask:
         else:
             pass
 
-    def How_much_series(self):
-        pass
-
 # warm-up
 class WarmUp:
-    def __init__(self, lvl):
+    def __init__(self):
         pass
     
 # push-ups
 class Exercise1(Exercise):
     def __init__(self):    
-        self.lvl = lvl
-
-        super().__init__("warm-up", self.lvl, )
+        pass
 
 # pull-up
 class Exercise2(Exercise):
@@ -61,7 +53,7 @@ class Exercise4(Exercise):
     def __init__(self):
         pass
 
-# extra "schooting 15" exercise
+# extra "shooting 15" exercise
 class Exercise5(Exercise):
     def __init__(self):
         pass

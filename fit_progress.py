@@ -11,6 +11,8 @@ import sys, os
 
 # import modules from from your own libraries
 import motivation
+import tracking_progress
+import exercises
 
 # app menu
 
@@ -61,11 +63,46 @@ class AppMenu():
                 sys.exit(0)
 
             elif self.user_choice == '1':
-                pass
-            
+                track = tracking_progress.TrackYourProgress()
+                track.Print_info()
             
             elif self.user_choice == '2':
-                pass
+                print("""
+                1 - All body training
+
+                2 - Push-up
+
+                3 - Pull-up
+
+                4 - Crunches
+
+                5 - Squats
+
+                6 - Shooting fifteen
+                \n
+                """)
+                choice = input("Your choice - ")
+
+                if choice == '1':
+                    pass
+
+                elif choice == '2':
+                    pass
+
+                elif choice == '3':
+                    pass
+
+                elif choice == '4':
+                    pass
+
+                elif choice == '5':
+                    pass
+
+                elif choice == '6':
+                    pass
+
+                else:
+                    pass
 
             elif self.user_choice == '3':
                 os.system()
