@@ -29,7 +29,7 @@ class Login:
                 if str(try_this_password) == str(lista[-1]):
                     print("Welcome in your private FIT-progress app account!")
                     time.sleep(3)
-                    app = fit_progress.AppMenu()
+                    app = fit_progress.AppMenu(self.login)
                     app.MakeAchoice(app.ShowAll, app.CreateAllMovesList)
 
                 elif self.tries <= 0:

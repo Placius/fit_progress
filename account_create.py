@@ -164,16 +164,51 @@ class NewUser:
         time.sleep(3)
 
 
-"""class User:
-    def __init__(self):
-        pass
+class User:
+    def __init__(self, login):
+        self.user_id = ""
+        self.name = ""
+        self.year_of_birth = "" 
+        self.month_of_birth = ""
+        self.day_of_birth = "" 
+        self.age = ""
+        self.sex = "" 
+        self.height = "" 
+        self.weight = ""
+        self.lvl = ""
+        self.login = login
+        self.password = ""
+    
+    def GetInfos(self):
+        lista =[]
+        with open("users/"+str(self.login)+"/"+str(self.login)+".txt") as f:
+            lines = f.read().split("\n")
+            for line in lines:
+                lista.append(line)
+        
+        self.user_id = lista[0]
+        self.name = lista[1]
+        self.year_of_birth = lista[2]
+        self.month_of_birth = lista[3]
+        self.day_of_birth = lista[4] 
+        self.age = lista[5]
+        self.sex = lista[6] 
+        self.height = lista[7] 
+        self.weight = lista[8]
+        self.lvl = lista[9]
+        self.password = lista[11]
 
     def PrintInfos(self):
         all_info = [self.user_id, self.name, self.year_of_birth, self.month_of_birth,
                     self.day_of_birth, self.age, self.sex, self.height, self.weight,
                     self.lvl, self.login, self.password]
         info_names = ["Id:", "Name: ", "Year of birth: ", "Month of birth: ", "Day of birth: ",
-                        "Age: ", "Sex: ", "Height: ", "Weight: ", "Login: ", "Password: "]
+                        "Age: ", "Sex: ", "Height: ", "Weight: ", "Level", "Login: ", "Password: "]
         for el in range(0,int(len(all_info))):
-            print(info_names[el], all_info[el])"""
-            
+            print(info_names[el], all_info[el])
+    
+    def ReturnInfos(self):
+        all_info = [self.user_id, self.name, self.year_of_birth, self.month_of_birth,
+                    self.day_of_birth, self.age, self.sex, self.height, self.weight,
+                    self.lvl, self.login, self.password]
+        return all_info

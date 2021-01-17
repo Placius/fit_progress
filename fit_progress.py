@@ -13,17 +13,28 @@ import sys, os
 import motivation
 import tracking_progress
 import exercises
+import account_create
 
 # app menu
 
 class AppMenu():
     
-    def __init__(self):   
+    def __init__(self, login):   
         options_list = ["Track your progress","Exercises", "Motivation for today"]   
         self.title = "FIT progress"
         self.options = options_list
         self.user_choice = None
         self.all_moves = {}
+        self.login = login
+
+        self.lvl = "lvl"
+
+        # current level of exercises
+        user = account_create.User(self.login)
+        user.GetInfos()
+        infos = user.ReturnInfos()
+        # index of level information
+        self.lvl =  infos[9] 
     
     def CreateAllMovesList(self):
         keys = 1
@@ -70,37 +81,27 @@ class AppMenu():
                 track.Print_info()
 
             elif self.user_choice == '2':
-                print("""
-                1 - All body training
+                exercises_menu = ("""
+                1 - Push-up
 
-                2 - Push-up
+                2 - Pull-up
 
-                3 - Pull-up
+                3 - Crunches
 
-                4 - Crunches
+                4 - Squats
 
-                5 - Squats
+                5 - Shooting fifteen
 
-                6 - Shooting fifteen
+                6 - Exit
                 \n
                 """)
 
                 while True:
+                    os.system("cls")
+                    print(exercises_menu)
                     choice = input("Your choice - ")
 
                     if choice == '1':
-                        print("Exercise: All body training\n\n")
-                        input("If you ready --> press Enter")
-                        if if_warmup_was_done == 1:
-                            warmUp = exercises.WarmUp()
-                            warmUp.BeforeStart()
-                            warmUp.StartWarmUp()
-                            if_warmup_was_done += 1
-                        
-                        else:
-                            pass
-
-                    elif choice == '2':
                         print("Exercise: Push Up\n\n")
                         input("If you ready --> press Enter")
                         if if_warmup_was_done == 1:
@@ -108,11 +109,15 @@ class AppMenu():
                             warmUp.BeforeStart()
                             warmUp.StartWarmUp()
                             if_warmup_was_done += 1
+
+                            exercise = exercises.Exercise1(self.lvl)
+                            exercise.DoExercise()
                         
                         else:
-                            pass
+                            exercise = exercises.Exercise1(self.lvl)
+                            exercise.DoExercise()
 
-                    elif choice == '3':
+                    elif choice == '2':
                         print("Exercise: Pull Up\n\n")
                         input("If you ready --> press Enter")
                         if if_warmup_was_done == 1:
@@ -120,11 +125,15 @@ class AppMenu():
                             warmUp.BeforeStart()
                             warmUp.StartWarmUp()
                             if_warmup_was_done += 1
+
+                            exercise = exercises.Exercise2(self.lvl)
+                            exercise.DoExercise()
                         
                         else:
-                            pass
+                            exercise = exercises.Exercise2(self.lvl)
+                            exercise.DoExercise()
 
-                    elif choice == '4':
+                    elif choice == '3':
                         print("Exercise: Crunches\n\n")
                         input("If you ready --> press Enter")
                         if if_warmup_was_done == 1:
@@ -132,11 +141,15 @@ class AppMenu():
                             warmUp.BeforeStart()
                             warmUp.StartWarmUp()
                             if_warmup_was_done += 1
+
+                            exercise = exercises.Exercise3(self.lvl)
+                            exercise.DoExercise()
                         
                         else:
-                            pass
+                            exercise = exercises.Exercise3(self.lvl)
+                            exercise.DoExercise()
 
-                    elif choice == '5':
+                    elif choice == '4':
                         print("Exercise: Squats\n\n")
                         input("If you ready --> press Enter")
                         if if_warmup_was_done == 1:
@@ -144,11 +157,15 @@ class AppMenu():
                             warmUp.BeforeStart()
                             warmUp.StartWarmUp()
                             if_warmup_was_done += 1
+
+                            exercise = exercises.Exercise4(self.lvl)
+                            exercise.DoExercise()
                         
                         else:
-                            pass
+                            exercise = exercises.Exercise4(self.lvl)
+                            exercise.DoExercise()
 
-                    elif choice == '6':
+                    elif choice == '5':
                         print("Exercise: Shooting Fifteen\n\n")
                         input("If you ready --> press Enter")
                         if if_warmup_was_done == 1:
@@ -156,12 +173,16 @@ class AppMenu():
                             warmUp.BeforeStart()
                             warmUp.StartWarmUp()
                             if_warmup_was_done += 1
+
+                            exercise = exercises.Exercise5(self.lvl)
+                            exercise.DoExercise()
                         
                         else:
-                            pass
+                            exercise = exercises.Exercise5(self.lvl)
+                            exercise.DoExercise()
                     
-                    elif choice == '7':
-                        break
+                    elif choice == '6':
+                        sys.exit(0)
 
                     else:
                         print("Bad commant, please try again.")

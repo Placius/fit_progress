@@ -215,7 +215,3 @@ class Exercise5(Exercise):
                 lista.append(line)
 
         super().__init__(lista[0], lista[1], lista[2], lvl)
-
-ex = Exercise2("Beginner")
-
-ex.DoExercise()
