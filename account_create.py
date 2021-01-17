@@ -181,7 +181,7 @@ class User:
     
     def GetInfos(self):
         lista =[]
-        with open("users/"+str(self.login)+"/"+str(self.login)+".txt") as f:
+        with open("users/"+str(self.login)+"/"+str(self.login)+".txt", "r+") as f:
             lines = f.read().split("\n")
             for line in lines:
                 lista.append(line)
@@ -212,3 +212,17 @@ class User:
                     self.day_of_birth, self.age, self.sex, self.height, self.weight,
                     self.lvl, self.login, self.password]
         return all_info
+    
+    def ChangeInfos(self):
+        self.GetInfos()
+
+        new_height = input("Height: ")
+        new_weight = input("Weight: ")
+        self.height = new_height
+        self.weight = new_weight
+        
+        all_info = self.ReturnInfos()
+
+        with open("users/"+str(self.login)+"/"+str(self.login)+".txt", "w") as f:
+            for data in all_info:
+                f.write(data + "\n")

@@ -7,7 +7,7 @@
 # git push -u origin main
 
 # import modules
-import sys, os
+import sys, os, time
 
 # import modules from from your own libraries
 import motivation
@@ -77,8 +77,31 @@ class AppMenu():
                 sys.exit(0)
 
             elif self.user_choice == '1':
-                track = tracking_progress.TrackYourProgress()
-                track.Print_info()
+                track_menu = """
+                1 - Change your weight and height
+
+                2 - Back to menu
+
+                3 - Exit
+                """
+
+                while True:
+                    os.system("cls")
+                    print(track_menu)
+                    choice = input("Your choice: ")
+                    if choice == '1':
+                        track = tracking_progress.TrackYourProgress(self.login)
+                        track.Change_my_datas()
+                    
+                    elif choice == '2':
+                        break
+
+                    elif choice == '3':
+                        sys.exit(0)
+                    
+                    else:
+                        print("Bad command, please try again.")
+                        time.sleep(3)
 
             elif self.user_choice == '2':
                 exercises_menu = ("""
@@ -92,7 +115,9 @@ class AppMenu():
 
                 5 - Shooting fifteen
 
-                6 - Exit
+                6 - Back to menu
+
+                7 - Exit
                 \n
                 """)
 
@@ -182,6 +207,9 @@ class AppMenu():
                             exercise.DoExercise()
                     
                     elif choice == '6':
+                        break
+
+                    elif choice == '7':
                         sys.exit(0)
 
                     else:
