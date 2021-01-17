@@ -80,23 +80,33 @@ class AppMenu():
                 track_menu = """
                 1 - Change your weight and height
 
-                2 - Back to menu
+                2 - Show your progress
 
-                3 - Exit
+                3 - Up-to-date information about you
+
+                4 - Back to menu
+
+                5 - Exit
                 """
 
                 while True:
                     os.system("cls")
                     print(track_menu)
                     choice = input("Your choice: ")
+                    track = tracking_progress.TrackYourProgress(self.login)
                     if choice == '1':
-                        track = tracking_progress.TrackYourProgress(self.login)
                         track.Change_my_datas()
                     
-                    elif choice == '2':
-                        break
+                    elif choice == '2':                  
+                        track.ShowProgress()
 
                     elif choice == '3':
+                        track.Actual_body_info()
+                    
+                    elif choice == '4':
+                        break
+
+                    elif choice == '5':
                         sys.exit(0)
                     
                     else:
