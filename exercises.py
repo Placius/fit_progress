@@ -78,6 +78,37 @@ class Exercise:
         
         else:
             pass
+    # function to start training
+    def DoExercise(self):
+        t = 5
+        for i in range(0,6):
+            os.system("cls")
+            print(self.description)
+            print("Training starting in " + str(t) + "...")
+            time.sleep(1)
+            t -= 1
+
+        winsound.Beep(800, 1000)
+
+        for serie in range (1,self.series):
+            os.system("cls")
+            print("Serie", serie)
+            print("\n\nMake", self.repeat,"repeats of", self.name,"\n\n")
+
+            input("When you finish, press --> Enter")
+
+            # pause
+            sec = int(self.pause)
+            winsound.Beep(800, 1000)
+            while sec != 0:
+                os.system("cls")
+                print("The break will end in:", sec)
+                time.sleep(1)
+                sec -= 1
+            winsound.Beep(800, 1000)
+            print("Start next serie, good luck!")
+            time.sleep(2)
+
     def PrintInfos(self):
         print(self.name, self.description, self.lvl, self.series, self.repeat, self.pause)
 
@@ -185,11 +216,6 @@ class Exercise5(Exercise):
 
         super().__init__(lista[0], lista[1], lista[2], lvl)
 
-# function to start training
-class DoExercise:
-    def __init__(self):
-        pass
+ex = Exercise2("Beginner")
 
-ex = Exercise1("Beginner")
-
-ex.PrintInfos()
+ex.DoExercise()
