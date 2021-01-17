@@ -11,7 +11,7 @@ class TrackYourProgress:
         pass
 
     def Actual_body_info(self):
-        print("Coming soon access...")
+        print("Coming soon access....")
     
     def Change_my_datas(self):
         user = account_create.User(self.login)
