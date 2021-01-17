@@ -5,9 +5,9 @@ import time, os, winsound
 
 # general class for exercises classes
 class Exercise:
-    def __init__(self, name, pause, lvl):
+    def __init__(self, description, name, pause, lvl):
         self.name = name
-        self.description = "description"
+        self.description = description
         self.lvl = lvl
         self.series = "series"
         self.repeat = "repeat"
@@ -78,6 +78,8 @@ class Exercise:
         
         else:
             pass
+    def PrintInfos(self):
+        print(self.name, self.description, self.lvl, self.series, self.repeat, self.pause)
 
 # warm-up
 class WarmUp:
@@ -133,28 +135,58 @@ class Exercise1(Exercise):
             for line in lines:
                 lista.append(line)
 
-        super().__init__(lista[0], lista[1], lvl)
-
-    def PrintInfos(self):
-        print(self.name, self.description, self.lvl, self.series, self.repeat, self.pause)
+        super().__init__(lista[0], lista[1], lista[2], lvl)
     
 # pull-up
 class Exercise2(Exercise):
-    def __init__(self):
-        pass
+    def __init__(self, lvl):   
+        lista =[]
+        with open("exercises/pull-up.txt") as file:
+            lines = file.read().split("\n")
+        
+            for line in lines:
+                lista.append(line)
+
+        super().__init__(lista[0], lista[1], lista[2], lvl)
 
 # crunches
 class Exercise3(Exercise):
-    def __init__(self):
-        pass
+    def __init__(self, lvl):   
+        lista =[]
+        with open("exercises/crunches.txt") as file:
+            lines = file.read().split("\n")
+        
+            for line in lines:
+                lista.append(line)
+
+        super().__init__(lista[0], lista[1], lista[2], lvl)
 
 # squats
 class Exercise4(Exercise):
-    def __init__(self):
-        pass
+    def __init__(self, lvl):   
+        lista =[]
+        with open("exercises/squats.txt") as file:
+            lines = file.read().split("\n")
+        
+            for line in lines:
+                lista.append(line)
+
+        super().__init__(lista[0], lista[1], lista[2], lvl)
 
 # extra "shooting 15" exercise
 class Exercise5(Exercise):
+    def __init__(self, lvl):   
+        lista =[]
+        with open("exercises/shooting.txt") as file:
+            lines = file.read().split("\n")
+        
+            for line in lines:
+                lista.append(line)
+
+        super().__init__(lista[0], lista[1], lista[2], lvl)
+
+# function to start training
+class DoExercise:
     def __init__(self):
         pass
 
