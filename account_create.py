@@ -36,6 +36,34 @@ class NewUser:
         
         self.age = age
 
+    def AskForLevel(self):
+        while True:
+            lvl = input("""
+            Begginer:  < 5 (pushups)
+
+            Low: 10 < 15 (pushups)
+
+            Medium: 15 < 30 (pushups)
+
+            High: 30 <  (pushups)
+
+            Your level? (B | L | M | H): 
+
+            """)
+            if lvl.upper() == "B":
+                return "Beginner"
+
+            elif lvl.upper() == "L":
+                return "Low"
+
+            elif lvl.upper() == "M":
+                return "Medium"
+
+            elif lvl.upper() == "H":
+                return "High"
+
+            else:
+                print("Bad command, please try again.")
     
     def CreateAccount(self, age):
         # get the Id number for new user
@@ -108,38 +136,7 @@ class NewUser:
             except ValueError:
                 print("Wrong data format, please try again.")
 
-
-        while True:
-            lvl = input("""
-            Begginer:  < 5 (pushups)
-
-            Low: 10 < 15 (pushups)
-
-            Medium: 15 < 30 (pushups)
-
-            High: 30 <  (pushups)
-
-            Your level? (B | L | M | H): 
-
-            """)
-            if lvl.upper() == "B":
-                self.lvl = "Beginner"
-                break
-
-            elif lvl.upper() == "L":
-                self.lvl = "Low"
-                break
-
-            elif lvl.upper() == "M":
-                self.lvl = "Medium"
-                break
-
-            elif lvl.upper() == "H":
-                self.lvl = "High"
-                break
-
-            else:
-                print("Bad command, please try again.")
+        self.lvl = self.AskForLevel()
 
         while True:
             try_login = input("Login: ")
@@ -264,6 +261,16 @@ class User:
                     self.day_of_birth, self.age, self.sex, self.height, self.weight,
                     self.lvl, self.login, self.password]
         return all_info
+    
+    def ChangeLevel(self):  
+        new_lvl = NewUser()
+        self.lvl = new_lvl.AskForLevel()
+         
+        all_info = self.ReturnInfos()
+
+        with open("users/"+str(self.login)+"/"+str(self.login)+".txt", "w") as f:
+            for data in all_info:
+                f.write(data + "\n")
     
     def ChangeInfos(self):
         new_height = input("Height: ")

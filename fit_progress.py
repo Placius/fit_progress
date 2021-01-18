@@ -118,20 +118,23 @@ class AppMenu():
                         time.sleep(3)
 
             elif self.user_choice == '2':
-                exercises_menu = ("""
-                1 - Push-up
+                exercises_menu = ("Actual level -  " + self.lvl.upper() + 
+                """\n\n
+        1 - Push-up
 
-                2 - Pull-up
+        2 - Pull-up
 
-                3 - Crunches
+        3 - Crunches
 
-                4 - Squats
+        4 - Squats
 
-                5 - Shooting fifteen
+        5 - Shooting fifteen
 
-                6 - Back to menu
+        6 - CHANGE LEVEL OF EXERCISES
 
-                7 - Exit
+        7 - Back to menu
+
+            8 - Exit
                 \n
                 """)
 
@@ -224,11 +227,20 @@ class AppMenu():
                         else:
                             exercise = exercises.Exercise5(self.lvl)
                             exercise.DoExercise()
-                    
+
                     elif choice == '6':
-                        break
+                        os.system("cls")
+                        lista = account_create.User(self.login)
+                        lista.ChangeLevel()
+                        lvl = lista.ReturnInfos()
+                        self.lvl = lvl[9]
+                        print("\n\nYour lvl was changed!")
+                        time.sleep(2)
 
                     elif choice == '7':
+                        break
+
+                    elif choice == '8':
                         sys.exit(0)
 
                     else:
