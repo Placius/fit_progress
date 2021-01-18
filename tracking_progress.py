@@ -17,6 +17,17 @@ class TrackYourProgress:
         # records lists
         self.first_records_list = 0
         self.new_records_list = 0
+    
+    def CheckProgress(self, first_check, last_check):
+        progress = int(last_check) - int(first_check)
+        if progress > 0:
+            return ("You have made progress in Push ups +" + str(progress))
+
+        elif progress < 0: 
+            return ("Fall in exercise Push ups " + str(progress))
+
+        else:
+            pass
 
     def ShowProgress(self):
         # WEIGHT PROGRESS
@@ -71,53 +82,11 @@ class TrackYourProgress:
             print("Crunches -\t\t\t", self.first_records_list[2], "\t\t\t", self.new_records_list[2])
             print("Squats -\t\t\t", self.first_records_list[3], "\t\t\t", self.new_records_list[3], "\n\n")
 
-            if int(self.first_records_list[0]) - int(self.new_records_list[0]) != 0:
-                progress = int(self.new_records_list[0]) - int(self.first_records_list[0])
-                if progress > 0:
-                    print("You have made progress in Push ups +" + str(progress))
+            print(self.CheckProgress(self.first_records_list[0], self.new_records_list[0]))
+            print(self.CheckProgress(self.first_records_list[1], self.new_records_list[1]))
+            print(self.CheckProgress(self.first_records_list[2], self.new_records_list[2]))
+            print(self.CheckProgress(self.first_records_list[3], self.new_records_list[3]))
 
-                elif progress < 0: 
-                    print("Fall in exercise Push ups", str(progress))
-
-                else:
-                    pass
-
-            if int(self.first_records_list[1]) - int(self.new_records_list[1]) != 0:
-                progress = int(self.new_records_list[1]) - int(self.first_records_list[1])
-                if progress > 0:
-                    print("You have made progress in Pull ups +" + str(progress))
-
-                elif progress < 0:
-                    print("Fall in exercise Pull ups", str(progress))
-
-                else:
-                    pass
-
-                
-            if int(self.first_records_list[2]) - int(self.new_records_list[2]) != 0:
-                progress = int(self.new_records_list[2]) - int(self.first_records_list[2])
-                if progress > 0:
-                    print("You have made progress in Crunches +" + str(progress))
-
-                elif progress < 0:
-                    print("Fall in exercise Crunches", str(progress))
-
-                else:
-                    pass
-
-
-            if int(self.first_records_list[3]) - int(self.new_records_list[3]) != 0:
-                progress = int(self.new_records_list[3]) - int(self.first_records_list[3])
-                if progress > 0:
-                    print("You have made progress in Squats +" + str(progress))
-
-                elif progress < 0:
-                    print("Fall in exercise Squats", str(progress))
-
-                else:
-                    pass
-
-        
         else:
             print("Actually, your record list is empty, make challenges and input your first records!")
 
