@@ -1,7 +1,7 @@
 # Login menu / start site
 
 # import modules
-import time
+import time, os
 import fit_progress
 import account_create
 
@@ -17,6 +17,7 @@ class Login:
 
     # check users datas (login and password)
     def Log(self):
+        os.system("cls")
         try_this_login = input("Login: ")
         try:
             lista = []
@@ -31,11 +32,12 @@ class Login:
             self.name = self.user_datas[1]
 
             while True:
+                os.system("cls")
                 print("Login:", self.login)
-                print(lista[-1])
                 try_this_password = input("Password: ")
 
                 if str(try_this_password) == str(lista[-1]):
+                    os.system("cls")
                     print(self.name + "! Welcome in your private FIT-progress app account!")
                     time.sleep(3)
                     app = fit_progress.AppMenu(self.login, self.name)
@@ -43,12 +45,14 @@ class Login:
 
                 elif self.tries <= 0:
                     print("I'm  sorry, your tries limit was finished.")
+                    time.sleep(2)
                     break
 
                 else:
                     print("Bad password, please try again.")
                     print("Tries limit:", self.tries)
                     self.tries -= 1
+                    time.sleep(3)
         
         except FileNotFoundError:
             print("User not exist, try with another login or create a new account.")

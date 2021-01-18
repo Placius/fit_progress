@@ -18,13 +18,13 @@ class TrackYourProgress:
         self.last_records_list = 0
         self.new_records_list = 0
     
-    def CheckProgress(self, last_check, new_check):
+    def CheckProgress(self, last_check, new_check, name):
         progress = int(new_check) - int(last_check)
         if progress > 0:
-            return ("You have made progress in Push ups +" + str(progress))
+            return ("You have made progress in " + str(name) + "| +" + str(progress))
 
         elif progress < 0: 
-            return ("Fall in exercise Push ups " + str(progress))
+            return ("Fall in exercise " + str(name) + "| " + str(progress))
 
         else:
             return ("-")
@@ -82,10 +82,10 @@ class TrackYourProgress:
             print("Crunches -\t\t\t", self.last_records_list[2], "\t\t\t", self.new_records_list[2])
             print("Squats -\t\t\t", self.last_records_list[3], "\t\t\t", self.new_records_list[3], "\n\n")
 
-            print(self.CheckProgress(self.last_records_list[0], self.new_records_list[0]))
-            print(self.CheckProgress(self.last_records_list[1], self.new_records_list[1]))
-            print(self.CheckProgress(self.last_records_list[2], self.new_records_list[2]))
-            print(self.CheckProgress(self.last_records_list[3], self.new_records_list[3]))
+            print(self.CheckProgress(self.last_records_list[0], self.new_records_list[0], "Push ups"))
+            print(self.CheckProgress(self.last_records_list[1], self.new_records_list[1], "Pull ups"))
+            print(self.CheckProgress(self.last_records_list[2], self.new_records_list[2], "Cranches"))
+            print(self.CheckProgress(self.last_records_list[3], self.new_records_list[3], "Squats"))
 
         else:
             print("Actually, your record list is empty, make challenges and input your first records!\n\n")
@@ -95,6 +95,29 @@ class TrackYourProgress:
         print("Height:", self.user_datas[7])
         print("Weight:", self.user_datas[8], "\n\n")
 
+        bmi = float(self.user_datas[8]) / ((float(self.user_datas[7])/100))**2
+
+        bmiTOprint = round(bmi,1)
+        print("BMI - " + str(bmiTOprint))
+
+        if bmi < 16.00:
+            print("Starvation (wygłodzenie)")
+        elif bmi > 16.00 and bmi < 17.00:
+            print("Emaciation (wychudzenie)")
+        elif bmi > 16.99 and bmi < 18.50:
+            print("Underweight (niedowaga)")
+        elif bmi > 18.49 and bmi < 25.00:
+            print("Correct weight (waga prawidłowa)")
+        elif bmi > 24.99 and bmi < 30.00:
+            print("Overweight (nadwaga)")
+        elif bmi > 29.99 and bmi < 35.00:
+            print("1st degree of obesity (I stopień nadwagi")
+        elif bmi > 34.99 and bmi < 40.00:
+            print("2st degree of obesity (II stopień nadwagi")
+        else:
+            print("Extreme obesity (otyłość skrajna)")
+
+        print("\n\n")
         input(" --> Enter")
     
     def Change_my_datas(self):
