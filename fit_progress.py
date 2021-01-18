@@ -88,12 +88,22 @@ class AppMenu():
                     choice = input("Your choice: ")
                     track = tracking_progress.TrackYourProgress(self.login)
                     if choice == '1':
+                        os.system("cls")
                         track.Change_my_datas()
                     
-                    elif choice == '2':                  
+                    elif choice == '2':        
+                        os.system("cls")          
                         track.ShowProgress()
+                        print("\n\nIf you want to change your records --> entry '1' and press Enter")
+                        print("If you want to back to menu --> press Enter\n\n")
+                        choice = input("Your choice: ")
+                        if choice == '1':
+                            track.NewRecordsList()
+                        else:
+                            break
 
                     elif choice == '3':
+                        os.system("cls")
                         track.Actual_body_info()
                     
                     elif choice == '4':
@@ -103,6 +113,7 @@ class AppMenu():
                         sys.exit(0)
                     
                     else:
+                        os.system("cls")
                         print("Bad command, please try again.")
                         time.sleep(3)
 

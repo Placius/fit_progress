@@ -15,11 +15,11 @@ class TrackYourProgress:
         self.max_crunches = 0
         self.max_squats = 0
         # records lists
-        self.first_records_list = 0
+        self.last_records_list = 0
         self.new_records_list = 0
     
-    def CheckProgress(self, first_check, last_check):
-        progress = int(last_check) - int(first_check)
+    def CheckProgress(self, last_check, new_check):
+        progress = int(new_check) - int(last_check)
         if progress > 0:
             return ("You have made progress in Push ups +" + str(progress))
 
@@ -27,7 +27,7 @@ class TrackYourProgress:
             return ("Fall in exercise Push ups " + str(progress))
 
         else:
-            pass
+            return ("-")
 
     def ShowProgress(self):
         # WEIGHT PROGRESS
@@ -52,18 +52,18 @@ class TrackYourProgress:
 
         # PROGRESS IN EXERCISES
         try:
-            first_records_list = []
+            last_records_list = []
             new_records_list = []
-            with open("users/" + str(self.login) + "/" + "firsts_records.txt", "r+") as f:
+            with open("users/" + str(self.login) + "/" + "lasts_records.txt", "r+") as f:
                 lines = f.read().split("\n")
                 for line in lines:
-                    first_records_list.append(line)
+                    last_records_list.append(line)
 
             with open("users/" + str(self.login) + "/" + "new_records.txt", "r+") as f:
                 lines = f.read().split("\n")
                 for line in lines:
                     new_records_list.append(line)
-            self.first_records_list = first_records_list
+            self.last_records_list = last_records_list
             self.new_records_list = new_records_list
 
             self.max_pushups = int(self.new_records_list[0])
@@ -71,26 +71,24 @@ class TrackYourProgress:
             self.max_crunches = int(self.new_records_list[2])
             self.max_squats = int(self.new_records_list[3])
         
-        except IOError or FileNotFoundError:
+        except IOError:
             pass
 
         # presentation records list and showing progress
         if self.max_pushups > 0 or self.max_pullups > 0 or self.max_crunches > 0 or self.max_squats > 0:
-            print("\t\tFirsts records:\t\tActually records:\n\n")
-            print("Push ups -\t\t\t", self.first_records_list[0], "\t\t\t", self.new_records_list[0])
-            print("Pull ups -\t\t\t", self.first_records_list[1], "\t\t\t", self.new_records_list[1])
-            print("Crunches -\t\t\t", self.first_records_list[2], "\t\t\t", self.new_records_list[2])
-            print("Squats -\t\t\t", self.first_records_list[3], "\t\t\t", self.new_records_list[3], "\n\n")
+            print("\t\tLasts records:\t\tActually records:\n\n")
+            print("Push ups -\t\t\t", self.last_records_list[0], "\t\t\t", self.new_records_list[0])
+            print("Pull ups -\t\t\t", self.last_records_list[1], "\t\t\t", self.new_records_list[1])
+            print("Crunches -\t\t\t", self.last_records_list[2], "\t\t\t", self.new_records_list[2])
+            print("Squats -\t\t\t", self.last_records_list[3], "\t\t\t", self.new_records_list[3], "\n\n")
 
-            print(self.CheckProgress(self.first_records_list[0], self.new_records_list[0]))
-            print(self.CheckProgress(self.first_records_list[1], self.new_records_list[1]))
-            print(self.CheckProgress(self.first_records_list[2], self.new_records_list[2]))
-            print(self.CheckProgress(self.first_records_list[3], self.new_records_list[3]))
+            print(self.CheckProgress(self.last_records_list[0], self.new_records_list[0]))
+            print(self.CheckProgress(self.last_records_list[1], self.new_records_list[1]))
+            print(self.CheckProgress(self.last_records_list[2], self.new_records_list[2]))
+            print(self.CheckProgress(self.last_records_list[3], self.new_records_list[3]))
 
         else:
-            print("Actually, your record list is empty, make challenges and input your first records!")
-
-        input(" --> Enter")
+            print("Actually, your record list is empty, make challenges and input your first records!\n\n")
 
     def Actual_body_info(self):
         print("Fit Progress\n\n")
@@ -118,17 +116,29 @@ class TrackYourProgress:
 
         try:
             # if file exist make a file with new records
-            with open("users/" + str(self.login) + "/" + "firsts_records.txt", "r+") as f:
+            with open("users/" + str(self.login) + "/" + "lasts_records.txt", "r+") as f:
                 pass
 
+            # save last records
+            lista = []
+            with open("users/" + str(self.login) + "/" + "new_records.txt", "r+") as f:
+                lines = f.read().split("\n")
+                for line in lines:
+                    lista.append(line)
+            
+            with open("users/" + str(self.login) + "/" + "lasts_records.txt", "w+") as f:
+                for data in lista:
+                    f.write(data + "\n")
+
+            # save new/actual records
             with open("users/" + str(self.login) + "/" + "new_records.txt", "w+") as f:
                 f.write(str(self.max_pushups) + "\n")
                 f.write(str(self.max_pullups) + "\n")
                 f.write(str(self.max_crunches) + "\n")
                 f.write(str(self.max_squats))
 
-        except IOError or FileNotFoundError:
-            with open("users/" + str(self.login) + "/" + "firsts_records.txt", "w+") as f:
+        except IOError:
+            with open("users/" + str(self.login) + "/" + "lasts_records.txt", "w+") as f:
                 f.write(str(self.max_pushups) + "\n")
                 f.write(str(self.max_pullups) + "\n")
                 f.write(str(self.max_crunches) + "\n")
@@ -138,6 +148,3 @@ class TrackYourProgress:
                 f.write(str(self.max_pullups) + "\n")
                 f.write(str(self.max_crunches) + "\n")
                 f.write(str(self.max_squats))
-
-progres = TrackYourProgress("Placius")
-progres.ShowProgress()
