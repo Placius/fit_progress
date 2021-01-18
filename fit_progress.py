@@ -19,13 +19,14 @@ import account_create
 
 class AppMenu():
     
-    def __init__(self, login):   
+    def __init__(self, login, name):   
         options_list = ["Track your progress","Exercises", "Motivation for today"]   
-        self.title = "FIT progress"
         self.options = options_list
         self.user_choice = None
         self.all_moves = {}
         self.login = login
+        self.name = name
+        self.title = "FIT progress\t\t\t\t" + str(self.name)
 
         self.lvl = "lvl"
 
@@ -137,7 +138,8 @@ class AppMenu():
                     choice = input("Your choice - ")
 
                     if choice == '1':
-                        print("Exercise: Push Up\n\n")
+                        print("Exercise: Push Up\n")
+                        print("Level:", self.lvl, "\n\n")
                         input("If you ready --> press Enter")
                         if if_warmup_was_done == 1:
                             warmUp = exercises.WarmUp()
@@ -153,7 +155,8 @@ class AppMenu():
                             exercise.DoExercise()
 
                     elif choice == '2':
-                        print("Exercise: Pull Up\n\n")
+                        print("Exercise: Pull Up\n")
+                        print("Level:", self.lvl, "\n\n")
                         input("If you ready --> press Enter")
                         if if_warmup_was_done == 1:
                             warmUp = exercises.WarmUp()
@@ -169,7 +172,8 @@ class AppMenu():
                             exercise.DoExercise()
 
                     elif choice == '3':
-                        print("Exercise: Crunches\n\n")
+                        print("Exercise: Crunches\n")
+                        print("Level:", self.lvl, "\n\n")
                         input("If you ready --> press Enter")
                         if if_warmup_was_done == 1:
                             warmUp = exercises.WarmUp()
@@ -185,7 +189,8 @@ class AppMenu():
                             exercise.DoExercise()
 
                     elif choice == '4':
-                        print("Exercise: Squats\n\n")
+                        print("Exercise: Squats\n")
+                        print("Level:", self.lvl, "\n\n")
                         input("If you ready --> press Enter")
                         if if_warmup_was_done == 1:
                             warmUp = exercises.WarmUp()
@@ -201,7 +206,8 @@ class AppMenu():
                             exercise.DoExercise()
 
                     elif choice == '5':
-                        print("Exercise: Shooting Fifteen\n\n")
+                        print("Exercise: Shooting Fifteen\n")
+                        print("Level:", self.lvl, "\n\n")
                         input("If you ready --> press Enter")
                         if if_warmup_was_done == 1:
                             warmUp = exercises.WarmUp()

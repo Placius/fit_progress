@@ -52,9 +52,33 @@ class NewUser:
 
         # get information about user
         name = input("Name: ")
-        year_of_birth = int(input("Year of birth: "))
-        month_of_birth = int(input("Month of birth: "))
-        day_of_birth = int(input("Day of birth: "))
+
+        while True:
+            try:
+                year_of_birth = int(input("Year of birth: "))
+                break
+            except ValueError:
+                print("Wrong data format, please try again.")
+        
+        while True:
+            try:
+                month_of_birth = int(input("Month of birth: "))
+                if month_of_birth > 12 or month_of_birth < 1:
+                    print("Bad command, please try again.")
+                else:
+                    break
+            except ValueError:
+                print("Wrong data format, please try again.")
+
+        while True:
+            try:
+                day_of_birth = int(input("Day of birth: "))
+                if day_of_birth > 31 or day_of_birth < 1:
+                    print("Bad command, please try again.")
+                else:
+                    break
+            except ValueError:
+                print("Wrong data format, please try again.")
 
         # actual age calculating
         age(year_of_birth, month_of_birth, day_of_birth)
@@ -70,8 +94,21 @@ class NewUser:
             else:
                 print("Bad command, try again!")
             
-        height = int(input("Height: "))
-        weight = int(input("Weight: "))
+        while True:
+            try:
+                height = int(input("Height: "))   
+                break
+            except ValueError:
+                print("Wrong data format, please try again.")
+        
+        while True:
+            try:
+                weight = int(input("Weight: "))
+                break
+            except ValueError:
+                print("Wrong data format, please try again.")
+
+
         while True:
             lvl = input("""
             Begginer:  < 5 (pushups)
@@ -117,9 +154,13 @@ class NewUser:
                 continue
 
             else:
-                self.login = try_login
-                with open("all_logins.txt", "a+") as file:
-                    file.write(str(self.login) + "\n")
+                if len(try_login) < 3:
+                    print("Login must have minimum three signs, please try again.")
+                    continue
+                else:
+                    self.login = try_login
+                    with open("all_logins.txt", "a+") as file:
+                        file.write(str(self.login) + "\n")
                     break
 
         password = "password"
@@ -148,6 +189,10 @@ class NewUser:
                 for el in all_info:
                     file.write(str(el) + "\n")
 
+            with open("users/" + str(self.login) + "/" + "start_body_datas.txt", "w+") as file:
+                    file.write(str(self.height) + "\n")
+                    file.write(str(self.weight) + "\n")
+
         # if file not exist make a new file          
         except FileNotFoundError:
             os.mkdir("users")
@@ -155,6 +200,11 @@ class NewUser:
             with open("users/" + str(self.login) + "/" + str(self.login) + ".txt", "w+") as file:
                 for el in all_info:
                     file.write(str(el) + "\n")
+            
+            with open("users/" + str(self.login) + "/" + "start_body_datas.txt", "w+") as file:
+                    file.write(str(self.height) + "\n")
+                    file.write(str(self.weight) + "\n")
+
         
         with open("actual_id_num.txt", "w") as file:
                 self.user_id = int(self.user_id) + 1
@@ -178,6 +228,8 @@ class User:
         self.lvl = ""
         self.login = login
         self.password = ""
+
+        self.GetInfos()
     
     def GetInfos(self):
         lista =[]
@@ -214,8 +266,6 @@ class User:
         return all_info
     
     def ChangeInfos(self):
-        self.GetInfos()
-
         new_height = input("Height: ")
         new_weight = input("Weight: ")
         self.height = new_height

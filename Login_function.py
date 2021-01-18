@@ -1,7 +1,9 @@
 # Login menu / start site
 
 # import modules
-import fit_progress, time
+import time
+import fit_progress
+import account_create
 
 # make a Log in function
 class Login:
@@ -9,6 +11,9 @@ class Login:
         self.login = "login"
         self.password = "password"
         self.tries = 3
+        self.user = ""
+        self.user_datas = ""
+        self.name = ""
 
     # check users datas (login and password)
     def Log(self):
@@ -20,6 +25,10 @@ class Login:
                     lista.append(line.rstrip())
             
             self.login = try_this_login
+            # getting the name for the welcome message
+            self.user = account_create.User(self.login)
+            self.user_datas = self.user.ReturnInfos()
+            self.name = self.user_datas[1]
 
             while True:
                 print("Login:", self.login)
@@ -27,9 +36,9 @@ class Login:
                 try_this_password = input("Password: ")
 
                 if str(try_this_password) == str(lista[-1]):
-                    print("Welcome in your private FIT-progress app account!")
+                    print(self.name + "! Welcome in your private FIT-progress app account!")
                     time.sleep(3)
-                    app = fit_progress.AppMenu(self.login)
+                    app = fit_progress.AppMenu(self.login, self.name)
                     app.MakeAchoice(app.ShowAll, app.CreateAllMovesList)
 
                 elif self.tries <= 0:
@@ -43,3 +52,4 @@ class Login:
         
         except FileNotFoundError:
             print("User not exist, try with another login or create a new account.")
+            time.sleep(3)

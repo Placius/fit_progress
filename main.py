@@ -1,6 +1,6 @@
 # main file
 
-import login_function, account_create, sys, os
+import login_function, account_create, sys, os, time
 
 class Main:
     def __init__(self):
@@ -25,12 +25,14 @@ class Main:
             elif choice == '2':
                 new_account = account_create.NewUser()
                 new_account.CreateAccount(new_account.Age)
+                time.sleep(3)
             
             elif choice == '3':
                 sys.exit(0)
 
             else:
                 print("Bad command, please try again.")
+                time.sleep(3)
 
 
 main = Main()
